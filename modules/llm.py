@@ -2,6 +2,8 @@ import ollama
 from modules.prompts import prompts
 
 LLM_MODEL_NAME = "llama3.2"
+# LLM_MODEL_NAME = "mistral"
+# LLM_MODEL_NAME = "deepseek-r1:7b"
 MAX_SIZE = 100
 global mem, prompt
 prompt = prompts[0]['prompt'] 
@@ -10,7 +12,10 @@ mem = [{"role": "system", "content": prompt}]
 def choose_prompt():
     print("Choose a prompt:")
     for i, p in enumerate(prompts):
-        print(f"{i+1}. {p['title']}")
+        if i%2 == 1:
+            print(f"\033[32m{i+1}. {p['title']}\033[0m")
+        else:
+            print(f"{i+1}. {p['title']}")
     while True:
         try:
             choice = input("Enter the number of your choice('q':exit): ")

@@ -18,8 +18,8 @@ RATE = 16000                # 取樣率
 
 DEBUG = False
 
-LANG = 'zh-tw'  # 語言設定為繁體中文
-# LANG = 'en-US'  # 語言設定為英文
+# LANG = 'zh-tw'  # 語言設定為繁體中文
+LANG = 'en-US'  # 語言設定為英文
 
 #功能說明 : 將語音轉成文字
 r = sr.Recognizer()

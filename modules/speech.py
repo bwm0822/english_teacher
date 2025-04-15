@@ -8,13 +8,13 @@ LANG = 'en' # 語言設定為英文
 # LANG = 'en-uk' # 語言設定為英式英文
 
 #功能說明 : 將 text 轉成語音並播放
-def text_to_speech(text):
+def text_to_speech(text, lang='zh-tw'):
     strip = text.replace('*', '').strip()
     if not strip: 
         # print("Error: No text to convert to speech."); 
         return
     try:
-        tts = gtts.gTTS(strip, lang=LANG, slow=True)
+        tts = gtts.gTTS(strip, lang=lang, slow=True)
         tts_fp = io.BytesIO()
         tts.write_to_fp(tts_fp)
         tts_fp.seek(0) # Reset the file pointer to the beginning

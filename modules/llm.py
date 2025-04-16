@@ -2,6 +2,7 @@ import ollama
 from modules.prompts import prompts
 
 LLM_MODEL_NAME = "llama3.2"
+# LLM_MODEL_NAME = "gemma3:4b"
 # LLM_MODEL_NAME = "mistral"
 # LLM_MODEL_NAME = "deepseek-r1:7b"
 MAX_SIZE = 100
@@ -51,13 +52,13 @@ def chat_init():
 
 def chat(user_input):
     mem.append({"role": "user", "content": user_input})
-    if len(mem) > MAX_SIZE: mem.pop(0)
+    if len(mem) > MAX_SIZE: mem.pop(1)
     response = ollama.chat(
         model = LLM_MODEL_NAME, 
         messages = mem, 
         stream = False)
     mem.append({"role": "assistant", "content": response["message"]["content"]})
-    if len(mem) > MAX_SIZE: mem.pop(0)
+    if len(mem) > MAX_SIZE: mem.pop(1)
     # print(mem)
     return response["message"]["content"]
 

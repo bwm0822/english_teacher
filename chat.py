@@ -47,9 +47,11 @@ def clear_screen():
 def you():
     clear_all_keypresses()
     print("\n\033[32mYou\033[0m(按[Enter]):",end='',flush=True)
-    wait_input()
+    # wait_input()
+    user_input = input()
     beepRec()
-    user_input = sr.record(WAIT_TIME)
+    text = sr.record(WAIT_TIME)
+    user_input += '' if text is None else text
     beepStop()
     print(user_input)
     return user_input
